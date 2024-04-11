@@ -5,6 +5,8 @@ jobs:
   triggerPipeline:
     runs-on: ubuntu-latest
     steps:
+      - name: Priont TOKEN
+        run: echo ${{ secrets.TOKENN }}
       - name: Trigger Changes
         uses: peter-evans/repository-dispatch@v2
         with: 
