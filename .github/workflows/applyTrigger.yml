@@ -1,0 +1,32 @@
+name: Apply
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env: 
+      triggerName: 'terraformApply'
+      gitRepoName: 'Portfolio_CI-CD_Azure'
+      pat_token: ${{ secrets.TOKENN }}
+      # payload_Baseline_Revision: "zsfdgsdbgngffdwdx1dxvv2"
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+         python-version: 3.8 #install the python needed
+         
+      - name: Install dependencies
+        run: |
+           cd "$GITHUB_WORKSPACE/deploymentScripts/"
+           python -m pip install --upgrade pip
+           pip install -r requirements.txt
+          
+      - name: Trigger the Workflow
+        run: |
+         cd "$GITHUB_WORKSPACE/deploymentScripts/"
+         python $GITHUB_WORKSPACE/deploymentScripts/workflowTrigger.py ${{ env.pat_token }}  ${{ env.gitAccount}}  ${{ env.gitRepoName}} ${{ env.triggerName}} 
+        #  python $GITHUB_WORKSPACE/deploymentScripts/workflowTrigger.py ${{ env.pat_token }}  ${{ env.gitAccount}}  ${{ env.gitRepoName}} ${{ env.triggerName}} ${{ env.planName }} ${{ env.payload_Baseline_Revision }}
+    
