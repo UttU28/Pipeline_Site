@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     env: 
       pat_token: ${{ secrets.TOKENN }}
-      payload_Baseline_Number: "BSL_001"
-      payload_Baseline_Revision: "zsfdgsdbgngffdwdx1dxvv2"
+      # payload_Baseline_Number: "BSL_001"
+      # payload_Baseline_Revision: "zsfdgsdbgngffdwdx1dxvv2"
 
     steps:
       - uses: actions/checkout@v3
@@ -42,5 +42,6 @@ jobs:
       - name: Trigger the Workflow
         run: |
          cd "$GITHUB_WORKSPACE/deploymentScripts/"
-         python $GITHUB_WORKSPACE/deploymentScripts/workflowTrigger.py ${{ env.pat_token }}  ${{ github.event.inputs.gitAccount}}  ${{ github.event.inputs.gitRepoName}} ${{ github.event.inputs.triggerName}} ${{ env.payload_Baseline_Number }} ${{ env.payload_Baseline_Revision }}
+         python $GITHUB_WORKSPACE/deploymentScripts/workflowTrigger.py ${{ env.pat_token }}  ${{ github.event.inputs.gitAccount}}  ${{ github.event.inputs.gitRepoName}} ${{ github.event.inputs.triggerName}}
+        #  python $GITHUB_WORKSPACE/deploymentScripts/workflowTrigger.py ${{ env.pat_token }}  ${{ github.event.inputs.gitAccount}}  ${{ github.event.inputs.gitRepoName}} ${{ github.event.inputs.triggerName}} ${{ env.payload_Baseline_Number }} ${{ env.payload_Baseline_Revision }}
     
