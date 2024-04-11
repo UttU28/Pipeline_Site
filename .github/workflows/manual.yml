@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Priont TOKEN
-        run: echo ${{ secrets.TOKENN }}
+        run: echo ${{ secrets.TOKEN }}
       - name: Trigger Changes
         uses: peter-evans/repository-dispatch@v2
         with: 
@@ -14,3 +14,35 @@ jobs:
           repository: UttU28/Pipeline_Site
           event-type: my-event
           client-payload: '{"github": "${{ toJson(github) }}", "action": "triggered"}'
+
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     env: 
+#       pat_token: ${{ secrets.TOKENN }}
+#       payload_Baseline_Number: "BSL_001"
+#       payload_Baseline_Revision: "zsfdgsdbgngffdwdx1dxvv2"
+
+#     # Steps represent a sequence of tasks that will be executed as part of the job
+#     steps:
+
+#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+#       - uses: actions/checkout@v3
+
+#       - name: setup python
+#         uses: actions/setup-python@v2
+#         with:
+#          python-version: 3.8 #install the python needed
+         
+#       - name: Install dependencies
+#         run: |
+#            cd "$GITHUB_WORKSPACE/Deployment-Scripts/"
+#            python -m pip install --upgrade pip
+#            pip install -r requirements.txt
+          
+#       - name: Trigger the Workflow
+#         run: |
+#          cd "$GITHUB_WORKSPACE/Deployment-Scripts/"
+#          python $GITHUB_WORKSPACE/Deployment-Scripts/workflow_trigger.py ${{ env.pat_token }}  ${{ github.event.inputs.workflow2_github_account}}  ${{ github.event.inputs.workflow2_repo_github}} ${{ github.event.inputs.workflow2_name}} ${{ env.payload_Baseline_Number }} ${{ env.payload_Baseline_Revision }}
+    
