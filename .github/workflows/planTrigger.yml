@@ -2,10 +2,11 @@ name: Plan
 on: workflow_dispatch
 
 jobs:
-  build:
+  plan:
     runs-on: ubuntu-latest
     env: 
       triggerName: 'terraformPlan'
+      gitAccount: 'UttU28'
       gitRepoName: 'Portfolio_CI-CD_Azure'
       pat_token: ${{ secrets.TOKENN }}
       # payload_Baseline_Revision: "zsfdgsdbgngffdwdx1dxvv2"
@@ -27,6 +28,6 @@ jobs:
       - name: Trigger the Workflow
         run: |
          cd "$GITHUB_WORKSPACE/deploymentScripts/"
-         python $GITHUB_WORKSPACE/deploymentScripts/workflowTrigger.py ${{ env.pat_token }}  'UttU28'  ${{ env.gitRepoName}} ${{ env.triggerName}} 
-        #  python $GITHUB_WORKSPACE/deploymentScripts/workflowTrigger.py ${{ env.pat_token }}  'UttU28'  ${{ env.gitRepoName}} ${{ env.triggerName}} ${{ env.planName }} ${{ env.payload_Baseline_Revision }}
+         python $GITHUB_WORKSPACE/deploymentScripts/workflowTrigger.py ${{ env.pat_token }}  ${{ env.gitAccount}}  ${{ env.gitRepoName}} ${{ env.triggerName}} 
+        #  python $GITHUB_WORKSPACE/deploymentScripts/workflowTrigger.py ${{ env.pat_token }}  ${{ env.gitAccount}}  ${{ env.gitRepoName}} ${{ env.triggerName}} ${{ env.planName }} ${{ env.payload_Baseline_Revision }}
     

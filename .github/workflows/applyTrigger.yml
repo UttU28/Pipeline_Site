@@ -2,10 +2,11 @@ name: Apply
 on: workflow_dispatch
 
 jobs:
-  build:
+  apply:
     runs-on: ubuntu-latest
     env: 
       triggerName: 'terraformApply'
+      gitAccount: 'UttU28'
       gitRepoName: 'Portfolio_CI-CD_Azure'
       pat_token: ${{ secrets.TOKENN }}
       # payload_Baseline_Revision: "zsfdgsdbgngffdwdx1dxvv2"

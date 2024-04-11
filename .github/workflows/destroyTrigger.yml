@@ -2,10 +2,11 @@ name: Destroy
 on: workflow_dispatch
 
 jobs:
-  build:
+  destroy:
     runs-on: ubuntu-latest
     env: 
       triggerName: 'terraformDestroy'
+      gitAccount: 'UttU28'
       gitRepoName: 'Portfolio_CI-CD_Azure'
       pat_token: ${{ secrets.TOKENN }}
       # payload_Baseline_Revision: "zsfdgsdbgngffdwdx1dxvv2"
